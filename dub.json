@@ -1,0 +1,12 @@
+{
+	"name": "pd2600-text",
+	"authors": [
+		"kvetal"
+	],
+	"dependencies": {
+		"serial-port": "~>1.2.0"
+	},
+	"description": "A minimal D application.",
+	"copyright": "Copyright © 2018, kvetal",
+	"license": "proprietary"
+}
