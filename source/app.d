@@ -24,13 +24,27 @@ void main()
 
 {
 	auto ports = SerialPort.ports;
+	do {
 	writeln("You have ", ports.length, " available com ports: ", ports);
-	writeln("Enter port name");
+	writeln("Enter port name or quit");
 	PortName = chomp(readln());
+
+	if (PortName == "quit") return;
+
 	if ((s_port is null)||(s_port.closed))
 	{
-		s_port = new SerialPort(PortName);
+		try
+		{
+			s_port = new SerialPort(PortName);
+		}
+		catch (Exception e)
+		{
+			writeln(e.msg);
+		}
 	}
+	}
+	while  ((s_port is null) || s_port.closed);
+
 
 	while (choiser != "q")
 	{
@@ -55,7 +69,7 @@ void main()
 			case "q","Q":s_port.close;
 				 break;
 			default:
-				 writeln("Wrong number.");
+				 writeln("Wrong number:", choiser);
 				 break;
 		}
 	}
